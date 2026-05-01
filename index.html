@@ -10,14 +10,22 @@
 <div class="container">
     <div class="hero">
         <h1>Fizika Test</h1>
-        <p>Ta'lim uchun mo‘ljallangan professional test. To‘g‘ri javoblarni tanlab, natijangizni ko‘ring.</p>
+        <p>Ism, familiya va sinfni tanlang. 7-sinfdan 11-sinfgacha har bir sinf uchun 15 tasodifiy savol tanlanadi.</p>
     </div>
 
     <div id="login-box" class="card">
         <h2>Foydalanuvchi kirishi</h2>
-        <p>Ism va familiyangizni kiriting.</p>
+        <p>Natijangiz faqat admin panelda saqlanadi.</p>
         <input type="text" id="firstName" placeholder="Ism" autocomplete="given-name">
         <input type="text" id="lastName" placeholder="Familiya" autocomplete="family-name">
+        <select id="gradeSelect">
+            <option value="">Sinfni tanlang</option>
+            <option value="7">7-sinf</option>
+            <option value="8">8-sinf</option>
+            <option value="9">9-sinf</option>
+            <option value="10">10-sinf</option>
+            <option value="11">11-sinf</option>
+        </select>
         <button id="startBtn">Testni boshlash</button>
     </div>
 
@@ -25,7 +33,7 @@
         <div class="quiz-header">
             <div>
                 <span class="label">Savol</span>
-                <span id="progress">1 / 8</span>
+                <span id="progress">1 / 15</span>
             </div>
         </div>
         <h2 id="question">Savol yuklanmoqda...</h2>
@@ -36,7 +44,7 @@
     <div id="result-box" class="card hidden">
         <h2>Natija</h2>
         <p id="score"></p>
-        <button onclick="location.reload()">Qayta boshlash</button>
+        <button onclick="location.reload()">Yana sinab ko‘rish</button>
     </div>
 </div>
 

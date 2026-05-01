@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>Admin Panel</h1>
+        <p>Bu yerda faqat administrator natijalarni ko‘ra oladi. Parolni kiriting va natijalarni yuklang.</p>
+    </div>
+
+    <div id="login-card" class="card">
+        <h2>Admin kirishi</h2>
+        <input type="password" id="adminSecret" placeholder="Admin paroli">
+        <button id="adminLoginBtn">Kirish</button>
+        <p id="adminError" class="admin-error hidden"></p>
+    </div>
+
+    <div id="admin-card" class="card hidden">
+        <h2>Saqlangan natijalar</h2>
+        <div id="results" class="results-list"></div>
+        <button onclick="location.reload()">Chiqish</button>
+    </div>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>

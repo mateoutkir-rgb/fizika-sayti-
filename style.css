@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    width: min(520px, 92%);
+    width: min(560px, 94%);
     text-align: left;
     padding: 32px;
 }
@@ -21,39 +21,40 @@ body {
 
 .hero h1 {
     margin: 0;
-    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 4vw, 2.6rem);
     letter-spacing: -0.04em;
 }
 
 .hero p {
     margin: 12px 0 0;
     color: #c8d5e8;
-    line-height: 1.7;
-    max-width: 42rem;
+    line-height: 1.75;
+    max-width: 45rem;
 }
 
 .card {
-    background: rgba(17, 28, 42, 0.96);
+    background: rgba(17, 28, 42, 0.98);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 22px;
+    border-radius: 24px;
     padding: 28px;
     margin-top: 18px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
 }
 
 .card h2 {
     margin: 0 0 12px;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: #f5f7fb;
 }
 
 .card p {
     color: #b0bed6;
-    margin: 0 0 20px;
+    margin: 0 0 18px;
     line-height: 1.75;
 }
 
 #login-box input,
+#login-box select,
 #login-box button,
 #answers button,
 #nextBtn {
@@ -65,14 +66,24 @@ body {
     font-size: 15px;
 }
 
-#login-box input {
+#login-box input,
+#login-box select {
     background: rgba(255, 255, 255, 0.08);
     color: #eef2f7;
     outline: none;
 }
 
-#login-box input::placeholder {
-    color: rgba(255, 255, 255, 0.55);
+#login-box select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #eef2f7 50%), linear-gradient(135deg, #eef2f7 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+#login-box input::placeholder,
+#login-box select option {
+    color: rgba(255, 255, 255, 0.65);
 }
 
 #login-box button {
@@ -99,7 +110,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: #7ea1d9;
@@ -111,9 +122,9 @@ body {
 }
 
 #question {
-    margin: 0 0 20px;
+    margin: 0 0 22px;
     font-size: 1.15rem;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .answers-grid {
@@ -167,6 +178,35 @@ body {
     font-weight: 600;
 }
 
+.admin-error {
+    color: #f67c7c;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+.results-list,
+.results-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.results-list th,
+.results-list td {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 12px 14px;
+    text-align: left;
+}
+
+.results-list th {
+    background: rgba(255, 255, 255, 0.08);
+    color: #eef2f7;
+}
+
+.results-list td {
+    color: #d9e3f0;
+}
+
 .hidden {
     display: none;
 }
@@ -178,6 +218,7 @@ body {
 
     #answers button,
     #login-box input,
+    #login-box select,
     #login-box button,
     #nextBtn {
         font-size: 14px;
