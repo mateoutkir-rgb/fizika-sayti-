@@ -1,51 +1,186 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: white;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #2a3f58 0%, #121921 55%, #0d131a 100%);
+    color: #eef2f7;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .container {
-    background: rgba(0,0,0,0.7);
-    padding: 30px;
-    border-radius: 15px;
-    width: 400px;
-    text-align: center;
+    width: min(520px, 92%);
+    text-align: left;
+    padding: 32px;
 }
 
-h1 {
-    margin-bottom: 20px;
+.hero {
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    letter-spacing: -0.04em;
+}
+
+.hero p {
+    margin: 12px 0 0;
+    color: #c8d5e8;
+    line-height: 1.7;
+    max-width: 42rem;
+}
+
+.card {
+    background: rgba(17, 28, 42, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 28px;
+    margin-top: 18px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.card h2 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    color: #f5f7fb;
+}
+
+.card p {
+    color: #b0bed6;
+    margin: 0 0 20px;
+    line-height: 1.75;
+}
+
+#login-box input,
+#login-box button,
+#answers button,
+#nextBtn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: none;
+    font-size: 15px;
+}
+
+#login-box input {
+    background: rgba(255, 255, 255, 0.08);
+    color: #eef2f7;
+    outline: none;
+}
+
+#login-box input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+#login-box button {
+    background: #4c8afb;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#login-box button:hover {
+    background: #3b72d3;
+    transform: translateY(-1px);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #7ea1d9;
+}
+
+#progress {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+#question {
+    margin: 0 0 20px;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.answers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
 }
 
 #answers button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
+    background: #1f3b5f;
+    color: #f0f5ff;
     cursor: pointer;
-    background: #3498db;
-    color: white;
-    font-size: 16px;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    text-align: left;
+    padding: 14px 16px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 #answers button:hover {
-    background: #2980b9;
+    transform: translateY(-1px);
+    background: #325f96;
+}
+
+#answers button.correct {
+    background: #1f6d43;
+}
+
+#answers button.wrong {
+    background: #ab2b25;
 }
 
 #nextBtn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #2ecc71;
-    border: none;
-    border-radius: 8px;
+    background: #22c55e;
+    color: #0f172a;
+    font-weight: 700;
     cursor: pointer;
+    margin-top: 24px;
+}
+
+#nextBtn:hover {
+    background: #16a34a;
+}
+
+#result-box {
+    text-align: center;
+}
+
+#result-box button {
+    background: #4c8afb;
+    color: white;
+    font-weight: 600;
 }
 
 .hidden {
     display: none;
+}
+
+@media (max-width: 520px) {
+    .card {
+        padding: 22px;
+    }
+
+    #answers button,
+    #login-box input,
+    #login-box button,
+    #nextBtn {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
 }

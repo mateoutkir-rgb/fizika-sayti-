@@ -8,15 +8,32 @@
 <body>
 
 <div class="container">
-    <h1>⚛️ Fizika Test</h1>
-    
-    <div id="quiz-box">
-        <h2 id="question">Savol yuklanmoqda...</h2>
-        <div id="answers"></div>
-        <button id="nextBtn">Keyingi</button>
+    <div class="hero">
+        <h1>Fizika Test</h1>
+        <p>Ta'lim uchun mo‘ljallangan professional test. To‘g‘ri javoblarni tanlab, natijangizni ko‘ring.</p>
     </div>
 
-    <div id="result-box" class="hidden">
+    <div id="login-box" class="card">
+        <h2>Foydalanuvchi kirishi</h2>
+        <p>Ism va familiyangizni kiriting.</p>
+        <input type="text" id="firstName" placeholder="Ism" autocomplete="given-name">
+        <input type="text" id="lastName" placeholder="Familiya" autocomplete="family-name">
+        <button id="startBtn">Testni boshlash</button>
+    </div>
+
+    <div id="quiz-box" class="card hidden">
+        <div class="quiz-header">
+            <div>
+                <span class="label">Savol</span>
+                <span id="progress">1 / 8</span>
+            </div>
+        </div>
+        <h2 id="question">Savol yuklanmoqda...</h2>
+        <div id="answers" class="answers-grid"></div>
+        <button id="nextBtn" class="hidden">Keyingi savol</button>
+    </div>
+
+    <div id="result-box" class="card hidden">
         <h2>Natija</h2>
         <p id="score"></p>
         <button onclick="location.reload()">Qayta boshlash</button>
