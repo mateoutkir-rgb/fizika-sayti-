@@ -29,6 +29,20 @@
         <button id="startBtn">Testni boshlash</button>
     </div>
 
+    <div id="admin-box" class="card hidden">
+        <h2>Admin panel</h2>
+        <p>Admin parolni kiriting va natijalarni ko‘ring.</p>
+        <input type="password" id="adminSecret" placeholder="Admin paroli">
+        <button id="adminLoginBtn">Adminga kirish</button>
+        <p id="adminError" class="admin-error hidden"></p>
+    </div>
+
+    <div id="admin-results" class="card hidden">
+        <h2>Saqlangan natijalar</h2>
+        <div id="results" class="results-list"></div>
+        <button id="adminLogoutBtn">Chiqish</button>
+    </div>
+
     <div id="quiz-box" class="card hidden">
         <div class="quiz-header">
             <div>

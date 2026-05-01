@@ -97,6 +97,13 @@ const startBtn = document.getElementById("startBtn");
 const firstNameInput = document.getElementById("firstName");
 const lastNameInput = document.getElementById("lastName");
 const gradeSelect = document.getElementById("gradeSelect");
+const adminBox = document.getElementById("admin-box");
+const adminSecretInput = document.getElementById("adminSecret");
+const adminLoginBtn = document.getElementById("adminLoginBtn");
+const adminError = document.getElementById("adminError");
+const adminResults = document.getElementById("admin-results");
+const adminLogoutBtn = document.getElementById("adminLogoutBtn");
+const resultsContainer = document.getElementById("results");
 const quizBox = document.getElementById("quiz-box");
 const progressEl = document.getElementById("progress");
 const questionEl = document.getElementById("question");
@@ -104,6 +111,8 @@ const answersEl = document.getElementById("answers");
 const nextBtn = document.getElementById("nextBtn");
 const resultBox = document.getElementById("result-box");
 const scoreEl = document.getElementById("score");
+
+adminBox.classList.remove("hidden");
 
 startBtn.onclick = () => {
     const first = firstNameInput.value.trim();
@@ -202,4 +211,84 @@ async function submitResult() {
     } catch (error) {
         console.warn('Backendga ulanishda xatolik yuz berdi:', error);
     }
+}
+
+adminLoginBtn.onclick = async () => {
+    const secret = adminSecretInput.value.trim();
+    if (!secret) {
+        showAdminError('Iltimos, admin parolni kiriting.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/results?secret=${encodeURIComponent(secret)}`);
+        const data = await response.json();
+        if (!response.ok) {
+            showAdminError(data.error || 'Kirish xatosi.');
+            return;
+        }
+
+        renderResults(data.results || []);
+        adminBox.classList.add('hidden');
+        adminResults.classList.remove('hidden');
+        adminError.classList.add('hidden');
+    } catch (error) {
+        showAdminError('Tarmoq xatosi. Iltimos keyinroq qayta urinib ko‘ring.');
+    }
+};
+
+adminLogoutBtn.onclick = () => {
+    adminSecretInput.value = '';
+    adminResults.classList.add('hidden');
+    adminBox.classList.remove('hidden');
+};
+
+function showAdminError(message) {
+    adminError.textContent = message;
+    adminError.classList.remove('hidden');
+}
+
+function renderResults(results) {
+    if (!results.length) {
+        resultsContainer.innerHTML = '<p>Hozircha natija yo‘q.</p>';
+        return;
+    }
+
+    const rows = results.map((result, index) => `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${escapeHtml(result.firstName)}</td>
+            <td>${escapeHtml(result.lastName)}</td>
+            <td>${escapeHtml(result.grade)}-sinf</td>
+            <td>${result.score} / ${result.total}</td>
+            <td>${new Date(result.timestamp).toLocaleString('uz-UZ')}</td>
+        </tr>
+    `).join('');
+
+    resultsContainer.innerHTML = `
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ism</th>
+                    <th>Familiya</th>
+                    <th>Sinf</th>
+                    <th>Natija</th>
+                    <th>Sana</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${rows}
+            </tbody>
+        </table>
+    `;
+}
+
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
